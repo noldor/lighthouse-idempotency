@@ -13,3 +13,4 @@
 /build export-ignore
 /composer.lock export-ignore
 /.github export-ignore
+/testbench.yaml export-ignore

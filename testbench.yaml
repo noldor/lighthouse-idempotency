@@ -1,0 +1,2 @@
+providers:
+  - Nuwave\Lighthouse\Testing\TestingServiceProvider

@@ -83,6 +83,12 @@ upload a ZIP to Packagist or send a generic API refresh request.
 
 ## Verification and recovery
 
+Root `testbench.yaml` explicitly loads Lighthouse's testing provider for Larastan's
+Testbench bootstrap, including the first run in a fresh checkout. PHPUnit tests
+retain their explicit provider registration. Formatter commands run without their
+file cache so local checks match clean CI. The Testbench configuration is
+development-only and excluded from distributions.
+
 Use the package's Docker runtime (PHP 8.5.12 and Composer 2.10.3), with its own
 PostgreSQL 16 service and test database. Set the container user to the checkout
 owner so dependency and archive files remain writable:

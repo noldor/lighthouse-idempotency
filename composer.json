@@ -53,8 +53,8 @@
         }
     },
     "scripts": {
-        "format": "php-cs-fixer fix",
-        "test:lint": "php-cs-fixer fix --dry-run --diff",
+        "format": "php-cs-fixer fix --using-cache=no",
+        "test:lint": "php-cs-fixer fix --dry-run --diff --using-cache=no",
         "test:types": "phpstan analyse --autoload-file=vendor/larastan/larastan/bootstrap.php --memory-limit=512M",
         "test:phanalist": "phanalist --src .",
         "test": "phpunit --no-coverage",

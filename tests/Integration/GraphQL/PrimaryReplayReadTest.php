@@ -37,7 +37,9 @@ final class PrimaryReplayReadTest extends GraphqlTestCase
         $this->assertNotSame($split->getPdo(), $split->getReadPdo());
         $this->assertSame('replica-stale', $replica->table('fixture_records')->value('title'));
         $request = Request::create('/');
-        $request->setUserResolver(static fn () => new GenericUser(['id' => 7]));
+        $request->setUserResolver(
+            static fn () => new GenericUser(['id' => 7]),
+        );
         $context = new HttpGraphQLContext($request);
         $checked = [];
         Gate::define('primary-view', static function ($actor, PrimaryReadRecord $model) use (&$checked): bool {
