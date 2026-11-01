@@ -1,0 +1,8 @@
+"A UUID idempotency key, normalized to lowercase without a version restriction."
+scalar IdempotencyKey @scalar(class: "Noldors\\LighthouseIdempotency\\Scalars\\IdempotencyKey")
+
+"Attach one stable client-generated key to an individual mutation action."
+directive @idempotent(
+    "Reuse this key when retrying the same business intent."
+    key: IdempotencyKey!
+) on FIELD

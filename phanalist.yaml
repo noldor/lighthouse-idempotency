@@ -1,0 +1,30 @@
+enabled_rules:
+  - E0002
+  - E0007
+  - E0009
+  - E0010
+  - E0011
+  - E0012
+  - E0016
+disable_rules: []
+rules:
+  E0007:
+    check_constructor: false
+    max_parameters: 8
+  E0009:
+    max_complexity: 10
+  E0010:
+    max_paths: 10
+  E0012:
+    include_namespaces: ["Noldors\\LighthouseIdempotency\\"]
+    exclude_namespaces: []
+    reset_interfaces: ["ResetInterface"]
+  E0016:
+    max_complexity: 15
+exclude_paths:
+  - vendor
+  - tests
+  - database
+  - resources
+  - build
+  - .phpstan-cache

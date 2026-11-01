@@ -1,0 +1,96 @@
+{
+    "name": "noldors/lighthouse-idempotency",
+    "description": "Transactional PostgreSQL idempotency for Laravel Lighthouse mutations.",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/noldor/lighthouse-idempotency",
+    "keywords": [
+        "laravel",
+        "lighthouse",
+        "graphql",
+        "idempotency"
+    ],
+    "support": {
+        "issues": "https://github.com/noldor/lighthouse-idempotency/issues",
+        "source": "https://github.com/noldor/lighthouse-idempotency"
+    },
+    "require": {
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*",
+        "illuminate/console": "^13.0",
+        "illuminate/database": "^13.0",
+        "illuminate/support": "^13.0",
+        "nuwave/lighthouse": "^6.72.5",
+        "php": "^8.5"
+    },
+    "require-dev": {
+        "denzyl/phanalist": "^1.1",
+        "larastan/larastan": "^3.13",
+        "laravel/octane": "^2.22",
+        "noldors/phpcsfixer-rules": "^1.2",
+        "noldors/phpstan-extension": "^0.8",
+        "orchestra/testbench": "^11.3",
+        "phpstan/phpstan": "^2.3",
+        "phpunit/phpunit": "^13.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Noldors\\LighthouseIdempotency\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Noldors\\LighthouseIdempotency\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Noldors\\LighthouseIdempotency\\LighthouseIdempotencyServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "format": "php-cs-fixer fix",
+        "test:lint": "php-cs-fixer fix --dry-run --diff",
+        "test:types": "phpstan analyse --autoload-file=vendor/larastan/larastan/bootstrap.php --memory-limit=512M",
+        "test:phanalist": "phanalist --src .",
+        "test": "phpunit --no-coverage",
+        "check": [
+            "@test:lint",
+            "@test:types",
+            "@test:phanalist",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "archive": {
+        "exclude": [
+            "/*",
+            "/.*",
+            "!/composer.json",
+            "!/LICENSE",
+            "!/README.md",
+            "!/src",
+            "!/src/**",
+            "!/config",
+            "!/config/**",
+            "!/lang",
+            "!/lang/**",
+            "!/resources",
+            "!/resources/**",
+            "!/database",
+            "!/database/**",
+            "!/docs",
+            "!/docs/**"
+        ]
+    }
+}

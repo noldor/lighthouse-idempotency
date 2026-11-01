@@ -1,0 +1,12 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+    - vendor/noldors/phpstan-extension/src/laravel.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    tmpDir: .phpstan-cache
+    reportUnmatchedIgnoredErrors: true

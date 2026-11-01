@@ -1,0 +1,37 @@
+services:
+    app:
+        build: .
+        image: noldors-lighthouse-idempotency:dev
+        user: "${PACKAGE_UID:-1000}:${PACKAGE_GID:-1000}"
+        working_dir: /app
+        volumes:
+            - .:/app
+        environment:
+            APP_ENV: testing
+            COMPOSER_HOME: /tmp/composer
+            XDEBUG_MODE: "off"
+            DB_CONNECTION: pgsql
+            DB_HOST: postgres
+            DB_PORT: "5432"
+            DB_DATABASE: lighthouse_idempotency_testing
+            DB_USERNAME: packages
+            DB_PASSWORD: packages
+        depends_on:
+            postgres:
+                condition: service_healthy
+    postgres:
+        image: postgres:16
+        environment:
+            POSTGRES_DB: lighthouse_idempotency_testing
+            POSTGRES_USER: packages
+            POSTGRES_PASSWORD: packages
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U packages -d lighthouse_idempotency_testing"]
+            interval: 2s
+            timeout: 3s
+            retries: 20
+        volumes:
+            - testing-postgres:/var/lib/postgresql/data
+
+volumes:
+    testing-postgres:
